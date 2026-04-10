@@ -1,4 +1,34 @@
+
 <script>
+async function run() {
+
+  const result = await getYouTubeLink("");
+  document.getElementById("output").innerHTML = result;
+}
+</script>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTubes</title>
+</head>
+<body>
+
+<h2>YouTubes</h2>
+
+<p id="result">
+<script>
+window.onload = function() {
+  alert('hi!');
+}
+</script>
+
+</p>
+
+<script>
+
+
 
 
 async function getYouTubeLink(url) {
@@ -23,33 +53,7 @@ async function getYouTubeLink(url) {
     return "Error fetching title for ${url}";
   }
 }
-</script>
 
-<script>
-async function run() {
-  const url = document.getElementById("yturl").value;
-
-  const result = await getYouTubeLink(url);
-  document.getElementById("output").innerHTML = result;
-}
-</script>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>YouTubes</title>
-</head>
-<body>
-
-<h2>YouTubes</h2>
-
-<p id="result">
-
-
-</p>
-
-<script>
 function extractVideoId(url) {
   let match = url.match(/(?:v=|youtu\.be\/)([^&]+)/);
   return match ? match[1] : null;
