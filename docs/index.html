@@ -1,0 +1,82 @@
+<script>
+
+
+async function getYouTubeLink(url) {
+  const flerbNitz = "AIzaSyDEkIfa-54i680jXTB_H9QyrED8L3WH7AM";
+  const videoId = extractVideoId(url);
+  if (!videoId) return "Invalid YouTube URL";
+
+  const apiUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=${flerbNitz}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    if (!data.items || data.items.length === 0) {
+      return "Video not found";
+    }
+
+    const title = data.items[0].snippet.title;
+
+    return `<a href="${url}" target="_blank">${title}</a>  - ${url}`;
+  } catch (err) {
+    return "Error fetching title for ${url}";
+  }
+}
+</script>
+
+<script>
+async function run() {
+  const url = document.getElementById("yturl").value;
+
+  const result = await getYouTubeLink(url);
+  document.getElementById("output").innerHTML = result;
+}
+</script>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTubes</title>
+</head>
+<body>
+
+<h2>YouTubes</h2>
+
+<p id="result">
+
+
+</p>
+
+<script>
+function extractVideoId(url) {
+  let match = url.match(/(?:v=|youtu\.be\/)([^&]+)/);
+  return match ? match[1] : null;
+}
+
+async function getTitle() {
+  const url = document.getElementById("url").value;
+  const videoId = extractVideoId(url);
+
+  if (!videoId) {
+    document.getElementById("result").innerText = "Invalid URL";
+    return;
+  }
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    const title = data.items[0].snippet.title;
+
+    document.getElementById("result").innerHTML =
+      `<a href="${url}" target="_blank">${title}</a>`;
+  } catch (err) {
+    document.getElementById("result").innerText = "Error fetching title";
+  }
+}
+</script>
+
+</body>
+</html>
