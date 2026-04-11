@@ -1,36 +1,23 @@
-
-<script>
-async function run() {
-
-  const result = await getYouTubeLink("");
-  document.getElementById("output").innerHTML = result;
-}
-</script>
-
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>YouTubes</title>
 </head>
+
 <body>
 
 <h2>YouTubes</h2>
 
 <p id="result">
+</p>
 <script>
 window.onload = function() {
   alert('hi!');
 }
 </script>
 
-</p>
 
 <script>
-
-
-
-
 async function getYouTubeLink(url) {
   const flerbNitz = "AIzaSyDEkIfa-54i680jXTB_H9QyrED8L3WH7AM";
   const videoId = extractVideoId(url);
@@ -80,6 +67,13 @@ async function getTitle() {
     document.getElementById("result").innerText = "Error fetching title";
   }
 }
+
+async function run() {
+
+  const result = await getYouTubeLink("");
+  document.getElementById("output").innerHTML = result;
+}
+
 </script>
 
 </body>
