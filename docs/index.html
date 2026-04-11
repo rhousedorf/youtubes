@@ -18,6 +18,7 @@ window.onload = function() {
   document.writeln("Hello, World!<br/>  ");
   document.writeln(getYouTubeLink("https://www.youtube.com/watch?v=PSZxmZmBfnU"));
   document.writeln(getYouTubeLink("End"));
+  document.writeln("End<br/>  ");
 }
 </script>
 
@@ -26,6 +27,8 @@ window.onload = function() {
 async function getYouTubeLink(url) {
   const flerbNitz = "AIzaSyDEkIfa-54i680jXTB_H9QyrED8L3WH7AM";
   const videoId = extractVideoId(url);
+  document.writeln("Extracted video ID: " + videoId + "<br/>  "      );
+
   if (!videoId) return "Invalid YouTube URL";
 
   const apiUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=${flerbNitz}`;
